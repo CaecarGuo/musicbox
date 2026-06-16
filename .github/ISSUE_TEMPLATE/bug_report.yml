@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        感谢反馈。提交前请先阅读 [README 排错说明](https://github.com/darknessomi/musicbox#排错)，并确认使用的是最新版本。
+        提交前请先阅读 [README 排错说明](https://github.com/darknessomi/musicbox#排错)，并确认已用最新版本复现。
 
         **请勿**在 Issue 中粘贴 Cookie、扫码登录输出或完整日志中的敏感信息。
 
@@ -33,20 +33,15 @@ body:
       required: true
 
   - type: textarea
-    id: expected
+    id: expected_actual
     attributes:
-      label: 期望行为
-      description: 你认为正确的结果应该是什么
+      label: 期望与实际行为
+      description: 分别说明期望结果和实际结果；如有终端报错请一并贴上（可脱敏）
+      placeholder: |
+        期望：正常暂停，继续可操作
+        实际：终端输出 `Error: ...` 后退出
     validations:
-      required: true
-
-  - type: textarea
-    id: actual
-    attributes:
-      label: 实际行为
-      description: 实际看到的结果，包括终端报错信息（可脱敏）
-    validations:
-      required: true
+      required: false
 
   - type: input
     id: version
@@ -54,26 +49,6 @@ body:
       label: MusicBox 版本
       description: 运行 `musicbox --version` 的输出
       placeholder: "0.5.2"
-    validations:
-      required: true
-
-  - type: dropdown
-    id: install_method
-    attributes:
-      label: 安装方式
-      options:
-        - PyPI / pipx / uv tool install
-        - 源码安装（uv sync / uv tool install .）
-        - 其他
-    validations:
-      required: true
-
-  - type: input
-    id: python
-    attributes:
-      label: Python 版本
-      description: 运行 `python3 --version` 或 `uv run python --version` 的输出
-      placeholder: "Python 3.12.x"
     validations:
       required: true
 
@@ -86,10 +61,11 @@ body:
       required: true
 
   - type: input
-    id: terminal
+    id: python
     attributes:
-      label: 终端与 Shell
-      placeholder: "iTerm2 + zsh / GNOME Terminal + bash"
+      label: Python 版本
+      description: 运行 `python3 --version` 的输出
+      placeholder: "Python 3.12.x"
     validations:
       required: false
 
@@ -104,19 +80,27 @@ body:
         - Daemon（`musicboxd`）
         - 不确定
     validations:
-      required: true
+      required: false
+
+  - type: dropdown
+    id: install_method
+    attributes:
+      label: 安装方式
+      options:
+        - PyPI / pipx / uv tool install
+        - 源码安装（uv sync / uv tool install .）
+        - 其他 / 不确定
+    validations:
+      required: false
 
   - type: textarea
     id: audio_check
     attributes:
       label: 音频依赖检查
-      description: |
-        若与播放相关，请说明 `mpg123`、`mpv` 是否已安装，以及同一终端下能否正常播放。
-        可参考 README：先检查 `mpg123`，再检查其他终端下 `musicbox` 是否正常。
+      description: 若与播放相关，请说明 `mpg123`、`mpv` 是否已安装及同一终端下能否正常播放
       placeholder: |
-        - mpg123: 已安装 / 未安装 / 未测试
-        - mpv: 已安装 / 未安装 / 未测试
-        - 同一终端下 mpg123 播放测试: 正常 / 失败 / 未测试
+        - mpg123: 已安装，同一终端播放测试正常
+        - mpv: 已安装
     validations:
       required: false
 
@@ -135,6 +119,6 @@ body:
     id: extra
     attributes:
       label: 补充信息
-      description: 截图、配置片段、代理设置、特定歌曲 ID 等
+      description: 截图、终端类型、代理设置、特定歌曲 ID 等
     validations:
       required: false

@@ -6,8 +6,6 @@ using newline-delimited JSON-RPC. A flock-based single-owner lock makes the
 daemon and the curses TUI mutually exclusive.
 """
 
-from __future__ import annotations
-
 import contextlib
 import errno
 import fcntl

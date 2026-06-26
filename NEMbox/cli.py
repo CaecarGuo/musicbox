@@ -1,7 +1,5 @@
 """Agent-friendly CLI for MusicBox (phase 1: stateless data commands)."""
 
-from __future__ import annotations
-
 import argparse
 import contextlib
 import curses

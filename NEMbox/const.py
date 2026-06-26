@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # KenHuang: 使配置文件夹符合XDG标准
 import os
 

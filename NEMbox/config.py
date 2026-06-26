@@ -1,4 +1,3 @@
-# encoding: UTF-8
 import json
 import os
 from typing import Any, cast

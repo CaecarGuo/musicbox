@@ -9,7 +9,6 @@ import hashlib
 import os
 import platform
 import subprocess
-from collections import OrderedDict
 
 __all__ = [
     "utf8_data_to_file",
@@ -58,7 +57,7 @@ def decode_terminal_input(raw: bytes) -> str:
 
 
 def uniq(arr):
-    return list(OrderedDict.fromkeys(arr).keys())
+    return list(dict.fromkeys(arr))
 
 
 def utf8_data_to_file(f, data):
